@@ -71,6 +71,7 @@ Route::prefix('doctor')->name('doctor.')->group(function(){
     Route::GET('/home',[DoctorController::class,'index'])->name('home');
     Route::post('/logout',[DoctorController::class,'logout'])->name('logout');
     // Route::view('/profile','dashboard.doctor.profile')->name('profile');
+    // Route::view('/profile','dashboard.doctor.profile')->name('profile');
     Route::GET('/profile',[DoctorController::class,'doctorprofile'])->name('profile');
     //Route::view('/schedule-timings','dashboard.doctor.schedule-timings')->name('schedule-timings');
     Route::get('/schedule-timings',[AptScheduleController::class,'index'])->name('schedule-timings');
