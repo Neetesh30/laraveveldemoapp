@@ -61,19 +61,8 @@
 							<li class="has-submenu active">
 								<a href="">Patients <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
-									<li class="has-submenu">
-										<a href="#">Doctors</a>
-										<ul class="submenu">
-											<li><a href="#">Map Grid</a></li>
-											<li><a href="#">Map List</a></li>
-										</ul>
-									</li>
 									<li class="{{ 'patient/searchdoctor' == request()->path() ? 'active':''}} "><a href="{{route('patient.searchdoctor')}}">Search Doctor</a></li>
-									<li><a href="#">Doctor Profile</a></li>
-									<li><a href="#">Booking</a></li>
 									<li class="{{ 'patient/home' == request()->path() ? 'active':''}} " ><a href="{{route('patient.home')}}">Patient Dashboard</a></li>
-									<li><a href="#">Favourites</a></li>
-									<li><a href="#">Chat</a></li>
 									<li class="{{ 'patient/profile' == request()->path() ? 'active':''}} " ><a href="{{route('patient.profile')}}">Profile Settings</a></li>
 									<li class="{{ 'patient/changepassword' == request()->path() ? 'active':''}} "><a href="{{route('patient.changepassword')}}">Change Password</a></li>
 								</ul>
@@ -188,16 +177,9 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
-                                                    <i class="fas fa-bookmark"></i>
-                                                    <span>Favourites</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fas fa-comments"></i>
-                                                    <span>Message</span>
-                                                    <small class="unread-msg">23</small>
+                                                <a href="{{route('patient.searchdoctor')}}">
+                                                    <i class="fas fa-user-md"></i>
+                                                    <span>Search Doctor</span>
                                                 </a>
                                             </li>
                                             <li class="{{ 'patient/profile' == request()->path() ? 'active':''}} ">
