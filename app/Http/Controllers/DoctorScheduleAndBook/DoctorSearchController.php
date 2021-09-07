@@ -64,7 +64,7 @@ class DoctorSearchController extends Controller
                 'app_contactno',
             ]);                               
 
-        return view('dashboard.DoctorScheduleAndBook.searchdoctor',['DoctorsList' => $doctorsdata,
+        return view('dashboard.doctorscheduleandbook.searchdoctor',['DoctorsList' => $doctorsdata,
                                         'rowcount' => $Count,'specialitylist'=>$specialitylist,
                                         'adminappdatas'=>$adminappdatas
                                     ]);
