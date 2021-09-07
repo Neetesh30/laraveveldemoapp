@@ -17,15 +17,15 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
 
             if($request->routeIs('admin.*')){
-                return redirect()->route('admin.login');
+                return route('admin.login');
             }
             
             if($request->routeIs('doctor.*')){
-                return redirect()->route('doctor.login');
+                return route('doctor.login');
             }
             
             if($request->routeIs('patient.*')){
-                return redirect()->route('patient.login');
+                return route('patient.login');
             }
 
             return route('login');
