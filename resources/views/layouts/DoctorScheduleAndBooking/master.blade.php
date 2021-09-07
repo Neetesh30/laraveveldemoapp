@@ -2,11 +2,11 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>@yield('head-title') - @yield('title')</title>
+		<title>- @yield('title')</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 		
 		<!-- Favicons -->
-		<link href="{{url('')}}\admin\assets\img\{{$faviconimagepath == NULL ? 'dummy-company-logo.jpg': $faviconimagepath}}" rel="icon">
+		{{-- <link href="{{url('')}}\admin\assets\img\{{$faviconimagepath == NULL ? 'dummy-company-logo.jpg': $faviconimagepath}}" rel="icon"> --}}
 						
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{{url('')}}\assets\css\bootstrap.min.css">
@@ -51,13 +51,13 @@
 							</span>
 						</a>
 						<a href="{{route('patient.home')}}" class="navbar-brand logo">
-							<img src="\admin\assets\img\{{$logoimagepath == NULL ? 'dummy-company-logo.jpg': $logoimagepath}}" class="img-fluid" alt="Logo">
+							{{-- <img src="\admin\assets\img\{{$logoimagepath == NULL ? 'dummy-company-logo.jpg': $logoimagepath}}" class="img-fluid" alt="Logo"> --}}
 						</a>
 					</div>
 					<div class="main-menu-wrapper">
 						<div class="menu-header">
 							<a href="{{route('patient.home')}}" class="menu-logo">
-								<img src="\admin\assets\img\{{$logoimagepath == NULL ? 'dummy-company-logo.jpg': $logoimagepath}}" class="img-fluid" alt="Logo">
+								{{-- <img src="\admin\assets\img\{{$logoimagepath == NULL ? 'dummy-company-logo.jpg': $logoimagepath}}" class="img-fluid" alt="Logo"> --}}
 							</a>
 							<a id="menu_close" class="menu-close" href="javascript:void(0);">
 								<i class="fas fa-times"></i>
@@ -180,9 +180,9 @@
 								<!-- Footer Widget -->
 								<div class="footer-widget footer-about">
 									<div class="footer-logo">
-										<img width="50%" src="\admin\assets\img\{{$logoimagepath == NULL ? 'dummy-company-logo.jpg': $logoimagepath}}" alt="{{$item['appname']}}">
+										{{-- <img width="50%" src="\admin\assets\img\{{$logoimagepath == NULL ? 'dummy-company-logo.jpg': $logoimagepath}}" alt="{{$item['appname']}}"> --}}
 									</div>
-									<h2 class="text-white">{{$appname}}</h2>
+									{{-- <h2 class="text-white">{{$appname}}</h2> --}}
 									<div class="footer-about-content">
 										
 									</div>

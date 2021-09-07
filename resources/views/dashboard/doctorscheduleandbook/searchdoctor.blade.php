@@ -1,16 +1,16 @@
-@foreach ($adminappdatas as $item)
+{{-- @foreach ($adminappdatas as $item)
 @php
     $appname = $item['appname'];
     $logoimagepath = $item['applogoimagepath'];
     $faviconimagepath = $item['applogofaviconimagepath'];
     $app_contact = $item['app_contactno'];
 @endphp
-@endforeach
+@endforeach --}}
 
 
 @extends('layouts.DoctorScheduleAndBooking.master')
 
-@section('favicon-logo',$faviconimagepath)
+{{-- @section('favicon-logo',$faviconimagepath)
 @section('headerlogo')
 <img src="\admin\assets\img\{{$logoimagepath == NULL ? 'dummy-company-logo.jpg': $logoimagepath}}" class="img-fluid" alt="Logo">
 @endsection
@@ -19,7 +19,7 @@
 @endsection
 @section('contact-info-header')
 {{$app_contact}}
-@endsection
+@endsection --}}
 
 
 @section('title','Search Doctor')
