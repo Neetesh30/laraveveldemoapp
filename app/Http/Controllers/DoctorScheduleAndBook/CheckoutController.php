@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Doctor;
 use App\Models\Admin;
-use App\Models\scheduledocappt;
+use App\Models\Scheduledocappt;
 use App\Models\BookedAppointment;
 use App\Models\payment_record;
 
@@ -24,7 +24,7 @@ class CheckoutController extends Controller
         ]);
 
 
-        if(scheduledocappt::where('id',$request->bookingslot)->exists()){
+        if(Scheduledocappt::where('id',$request->bookingslot)->exists()){
         }
         else{
             redirect()->back()->with('fail','booking slot does not exist');
@@ -91,7 +91,7 @@ class CheckoutController extends Controller
             ]);
             
             
-            $bookingdoctordatas = scheduledocappt::join('doctors','doctors.id', '=', 'scheduledocappts.doctorid')
+            $bookingdoctordatas = Scheduledocappt::join('doctors','doctors.id', '=', 'scheduledocappts.doctorid')
             ->where('scheduledocappts.id', $request->bookingslot)
             ->get([
                 'scheduledocappts.id',
@@ -128,7 +128,7 @@ class CheckoutController extends Controller
 
             if($add_appointment){
 
-                $update_scheduledocappt_slot = scheduledocappt::find($request->bookingslot);
+                $update_scheduledocappt_slot = Scheduledocappt::find($request->bookingslot);
                 $update_scheduledocappt_slot -> booking_status = 'booked';
                 $update_scheduledocappt_slot -> booking_date = $request->bookingdate;
                 $update_scheduledocappt_slot -> save();
