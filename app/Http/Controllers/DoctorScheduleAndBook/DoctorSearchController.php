@@ -202,7 +202,7 @@ class DoctorSearchController extends Controller
                 'app_contactno',
             ]);                               
         
-        return view('dashboard.DoctorScheduleAndBook.booking',[
+        return view('dashboard.doctorscheduleAndbook.booking',[
                                                                 'bookingdoctordatas' => $bookingdoctordatas,
                                                                 'sundaybookingslots' => $sundaybookingdatas,
                                                                 'mondaybookingslots' => $mondaybookingdatas,
