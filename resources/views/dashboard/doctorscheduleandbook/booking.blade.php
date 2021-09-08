@@ -257,16 +257,39 @@
                                                                 @if (date('D', $date) == 'Wed' )
                                                                     <li>
                                                                         @foreach ($wednesdaybookingslots as $row)
-                                                                            @if(strtotime($row['booking_date']) == strtotime(date('y-m-d', $date)))
+                                                                                @php
+                                                                                date_default_timezone_set('Asia/Kolkata');
+                                                                                date('h:i a', $date);
+                                                                                $decreasecurrentslots = explode('-',$row['starttime']);
+                                                                            @endphp
+
+                                                                            @if (date('y-m-d', $date) == date('y-m-d'))
+                                                                                @if (strtotime($decreasecurrentslots[0]) <= strtotime(date('h:i a', $date)))
+                                                                                    -
+                                                                                    @else
+                                                                                    @if(strtotime($row['booking_date']) == strtotime(date('y-m-d', $date)))
+                                                                                        <label class=" timing selected ">
+                                                                                            <span>{{$row['starttime']}}</span>  
+                                                                                        </label>
+                                                                                        @else
+                                                                                            <label class="timing ">
+                                                                                                <input type="radio" class="" name="bookingslot" value="{{$row['id']}}">
+                                                                                                <span>{{$row['starttime']}}</span>  
+                                                                                            </label>
+                                                                                    @endif
+                                                                                @endif
+                                                                            @else
+                                                                                @if(strtotime($row['booking_date']) == strtotime(date('y-m-d', $date)))
                                                                                 <label class=" timing selected ">
                                                                                     <span>{{$row['starttime']}}</span>  
                                                                                 </label>
                                                                                 @else
-                                                                                <label class="timing ">
-                                                                                    <input type="radio" class="" name="bookingslot" value="{{$row['id']}}">
-                                                                                    <span>{{$row['starttime']}}</span>  
-                                                                                </label>
+                                                                                    <label class="timing ">
+                                                                                        <input type="radio" class="" name="bookingslot" value="{{$row['id']}}">
+                                                                                        <span>{{$row['starttime']}}</span>  
+                                                                                    </label>
                                                                             @endif
+                                                                        @endif
                                                                         @endforeach     
                                                                     </li>
                                                                 @endif
