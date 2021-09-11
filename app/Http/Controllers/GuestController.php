@@ -23,6 +23,20 @@ class GuestController extends Controller
         return view('dashboard.admin.login',['guestdatas'=>$guestdatas]);
     }
 
+    public function welcome()
+    {
+        $guestdatas = Admin::select('appname','applogoimagepath','applogofaviconimagepath','app_contactno')
+        ->where('id','1')
+        ->get([
+                'appname',
+                'applogoimagepath',
+                'applogofaviconimagepath',
+                'app_contactno',
+            ]);
+
+        return view('welcome',['guestdatas'=>$guestdatas]);
+    }
+
     public function patientloginindex()
     {
 

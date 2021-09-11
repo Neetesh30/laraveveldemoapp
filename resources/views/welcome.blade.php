@@ -1,132 +1,853 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
+@foreach ($guestdatas as $item)
+@php
+    $appname = $item['appname'];
+    $logoimagepath = $item['applogoimagepath'];
+    $faviconimagepath = $item['applogofaviconimagepath'];
+    $app_contact = $item['app_contactno'];
+@endphp
+@endforeach
+
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<title>{{$appname}}</title>
+		
+		<!-- Favicons -->
+		<link type="image/x-icon" href="{{url('')}}\admin\assets\img\{{$faviconimagepath == NULL ? 'dummy-company-logo.jpg': $faviconimagepath}}" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets\css\bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets\plugins\fontawesome\css\fontawesome.min.css">
+		<link rel="stylesheet" href="assets\plugins\fontawesome\css\all.min.css">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="assets\css\style.css">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	
+	</head>
+	<body>
 
-        <title>Laravel</title>
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			<!-- Header -->
+			<header class="header">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="navbar-header">
+						<a id="mobile_btn" href="javascript:void(0);">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+                        <a href="#" class="navbar-brand logo">
+							<img src="\admin\assets\img\{{$logoimagepath == NULL ? 'dummy-company-logo.jpg': $logoimagepath}}" class="img-fluid" alt="Logo">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="#" class="menu-logo">
+								<img src="\admin\assets\img\{{$logoimagepath == NULL ? 'dummy-company-logo.jpg': $logoimagepath}}" class="img-fluid" alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav">
+							<li class="login-link">
+								<a href="patient/login">Login / Signup</a>
+							</li>
+						</ul>		 
+					</div>		 
+					<ul class="nav header-navbar-rht">
+						<li class="nav-item contact-item">
+							<div class="header-contact-img">
+								<i class="far fa-hospital"></i>							
+							</div>
+							<div class="header-contact-detail">
+								<p class="contact-header">Contact</p>
+								<p class="contact-info-header"> +91 {{$app_contact}}</p>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link header-login" href="patient/login">login / Signup </a>
+						</li>
+					</ul>
+				</nav>
+			</header>
+			<!-- /Header -->
+			
+			<!-- Home Banner -->
+			<section class="section section-banner">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-md-6">
+						</div>
+						<div class="col-12 col-md-6">
+							<div class="banner-wrapper">
+								<div class="banner-header">
+									<h5>Be Hear Healthy</h5>
+									<h1>Lorem Ipsum <br><span>simply simply simply</span></h1>
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indstandard dummy text ever</p>
+									<div class="btn-col">
+										<ul>
+											<li><a href="patient/login" class="btn btn-fill">Patient Register</a></li>
+											<li><a href="patient/register" class="btn btn-notfill">Patient Sign In</a></li>
+										</ul>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /Home Banner -->
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+			<!-- Search Section -->
+			<section class="search-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-lg-6 col-xl-8">
+							<div class="search-box">
+								<h2>Search Doctor, <br>Make an Appointment !</h2>
+								<div class="form-col">
+									<form method="post" action="search.html">
+										<ul class="d-flex flex-wrap">
+											<li>
+												<input type="text" placeholder="Location" class="form-control">
+											</li>
+											<li>
+												<input type="text" placeholder="Gender" class="form-control">
+											</li>
+											<li>
+												<input type="text" placeholder="Phone Number" class="form-control">
+											</li>
+											<li>
+												<input type="submit" value="Search" class="btn-submit form-control">
+											</li>
+										</ul>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-6 col-xl-4">
+						</div>
+					</div>
+				</div>
+				<div class="search-right-img">
+					<img src="assets\img\search-img.png" alt="">
+				</div>
+			</section>
+			<!-- Search Section -->
+			  
+			<!-- Popular Section -->
+			<section class="section popular-section">
+				<div class="container">
+					<div class="section-header text-center">
+						<h5>WHAT WE HAVE</h5>
+						<h2>Heart Care based Solutions</h2>
+						<p class="sub-title">We merge two services consulting and brilliant client Services for the patient healthcare. Used latest technology in hospital.</p>
+					</div>
+				   <div class="row">
+						<div class="col-12">
+							<div class="solution-slider slider">
+							
+								<!-- Solution Widget -->
+								<div class="profile-widget">
+									<div class="doc-img">
+										<a href="doctor-profile.html">
+											<img class="img-fluid" alt="User Image" src="assets\img\solution1.png">
+										</a>
+									</div>
+									<div class="pro-content">
+										<div class="specialities-img">
+											<img src="assets\img\specialities\specialities-01.png" alt="">
+										</div>
+										<h5>SURGERY</h5>
+										<h3 class="title">
+											Heart Surgery
+										</h3>
+										<p class="speciality">Lorem Ipsum is simply dummy text  the printing and typesetting industry. </p>
+										<a href="doctor-profile.html" class="readmore-btn"><i class="fas fa-chevron-circle-right"></i> Read more</a>
+									</div>
+								</div>
+								<!-- /Solution Widget -->
+						
+								<!-- Solution Widget -->
+								<div class="profile-widget">
+									<div class="doc-img">
+										<a href="doctor-profile.html">
+											<img class="img-fluid" alt="User Image" src="assets\img\solution2.png">
+										</a>
+									</div>
+									<div class="pro-content">
+										<div class="specialities-img">
+											<img src="assets\img\specialities\specialities-02.png" alt="">
+										</div>
+										<h5>SAVING LIVES</h5>
+										<h3 class="title">
+											Valve Diseases
+										</h3>
+										<p class="speciality">Lorem Ipsum is simply dummy text  the printing and typesetting industry. </p>
+										<a href="doctor-profile.html" class="readmore-btn"><i class="fas fa-chevron-circle-right"></i> Read more</a>
+									</div>
+								</div>
+								<!-- /Solution Widget -->
+						
+								<!-- Solution Widget -->
+								<div class="profile-widget">
+									<div class="doc-img">
+										<a href="doctor-profile.html">
+											<img class="img-fluid" alt="User Image" src="assets\img\solution3.png">
+										</a>
+									</div>
+									<div class="pro-content">
+										<div class="specialities-img">
+											<img src="assets\img\specialities\specialities-03.png" alt="">
+										</div>
+										<h5>GREAT CARE</h5>
+										<h3 class="title">
+											Children’s services
+										</h3>
+										<p class="speciality">Lorem Ipsum is simply dummy text  the printing and typesetting industry. </p>
+										<a href="doctor-profile.html" class="readmore-btn"><i class="fas fa-chevron-circle-right"></i> Read more</a>
+									</div>
+								</div>
+								<!-- /Solution Widget -->
 
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}
-        </style>
+								<!-- Solution Widget -->
+								<div class="profile-widget">
+									<div class="doc-img">
+										<a href="doctor-profile.html">
+											<img class="img-fluid" alt="User Image" src="assets\img\solution1.png">
+										</a>
+									</div>
+									<div class="pro-content">
+										<div class="specialities-img">
+											<img src="assets\img\specialities\specialities-01.png" alt="">
+										</div>
+										<h5>SURGERY</h5>
+										<h3 class="title">
+											Heart Surgery
+										</h3>
+										<p class="speciality">Lorem Ipsum is simply dummy text  the printing and typesetting industry. </p>
+										<a href="doctor-profile.html" class="readmore-btn"><i class="fas fa-chevron-circle-right"></i> Read more</a>
+									</div>
+								</div>
+								<!-- /Solution Widget -->
+						
+								<!-- Solution Widget -->
+								<div class="profile-widget">
+									<div class="doc-img">
+										<a href="doctor-profile.html">
+											<img class="img-fluid" alt="User Image" src="assets\img\solution2.png">
+										</a>
+									</div>
+									<div class="pro-content">
+										<div class="specialities-img">
+											<img src="assets\img\specialities\specialities-02.png" alt="">
+										</div>
+										<h5>SAVING LIVES</h5>
+										<h3 class="title">
+											Valve Diseases
+										</h3>
+										<p class="speciality">Lorem Ipsum is simply dummy text  the printing and typesetting industry. </p>
+										<a href="doctor-profile.html" class="readmore-btn"><i class="fas fa-chevron-circle-right"></i> Read more</a>
+									</div>
+								</div>
+								<!-- /Solution Widget -->
+						
+								<!-- Solution Widget -->
+								<div class="profile-widget">
+									<div class="doc-img">
+										<a href="doctor-profile.html">
+											<img class="img-fluid" alt="User Image" src="assets\img\solution3.png">
+										</a>
+									</div>
+									<div class="pro-content">
+										<div class="specialities-img">
+											<img src="assets\img\specialities\specialities-03.png" alt="">
+										</div>
+										<h5>GREAT CARE</h5>
+										<h3 class="title">
+											Children’s services
+										</h3>
+										<p class="speciality">Lorem Ipsum is simply dummy text  the printing and typesetting industry. </p>
+										<a href="doctor-profile.html" class="readmore-btn"><i class="fas fa-chevron-circle-right"></i> Read more</a>
+									</div>
+								</div>
+								<!-- /Solution Widget -->
+								
+							</div>
+						</div>
+				   </div>
+				</div>
+			</section>
+			<!-- /Popular Section -->
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+			<!-- About Us -->
+			<section class="section aboutus-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-lg-6">
+							<div class="left">
+								<div class="section-header">
+									<h5>WHY CHOOSE US</h5>
+									<h2>We are Achieve the Success of <span>Heart Surgery</span></h2>
+								</div>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+								<div class="feature-col row">
+									<div class="col-12 col-md-6">
+										<div class="feature-box">
+											<div class="corner-img"><img src="assets\img\feature1.png" alt=""></div>
+											<h2>870+</h2>
+											<h6>Satisfied Patients</h6>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="feature-box">
+											<div class="corner-img"><img src="assets\img\feature2.png" alt=""></div>
+											<h2>1500+</h2>
+											<h6>Patient/Year</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-6">
+							<div class="right">
+								<img src="assets\img\about-us.png" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /About Us -->
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+			<!-- Feature List -->
+			<section class="feature-list">	
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-md-6 col-lg-3">
+							<div class="feature-list-box">
+								<div class="number-col text-right"><h5>01</h5></div>
+								<div class="feature-icon">
+									<img src="assets\img\icon1.png" alt="">
+								</div>
+								<h4>Personalized <br>Healthcare</h4>
+								<div class="plus-icon text-right"><i class="fas fa-plus-circle"></i></div>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 col-lg-3">
+							<div class="feature-list-box">
+								<div class="number-col text-right"><h5>02</h5></div>
+								<div class="feature-icon">
+									<img src="assets\img\icon2.png" alt="">
+								</div>
+								<h4>Professional <br>Team</h4>
+								<div class="plus-icon text-right"><i class="fas fa-plus-circle"></i></div>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 col-lg-3">
+							<div class="feature-list-box">
+								<div class="number-col text-right"><h5>03</h5></div>
+								<div class="feature-icon">
+									<img src="assets\img\icon3.png" alt="">
+								</div>
+								<h4>Regularly <br>checkup</h4>
+								<div class="plus-icon text-right"><i class="fas fa-plus-circle"></i></div>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 col-lg-3">
+							<div class="feature-list-box">
+								<div class="number-col text-right"><h5>04</h5></div>
+								<div class="feature-icon">
+									<img src="assets\img\icon4.png" alt="">
+								</div>
+								<h4>Latest <br>Technology</h4>
+								<div class="plus-icon text-right"><i class="fas fa-plus-circle"></i></div>
+							</div>
+						</div>
+					</div>
+				</div>			
+			</section>
+			<!-- /Feature List -->
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
+			<!-- Testimonials -->
+			<section class="testimonials">
+				<div class="container">
+					<div class="section-header text-center">
+						<h5>TESTIMONIALS</h5>
+						<h2>What Patient say about us</h2>
+						<p class="sub-title">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</p>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<!-- Slider -->
+							<div class="testimonials-slider slider">
+							
+								<!-- Slider Item -->
+								<div class="testimonials-item">
+									<div class="card">
+										<div class="card-header">
+											<div class="d-flex align-items-center justify-content-between">
+												<div class="">
+													<img src="assets\img\patients\patient.jpg" alt="" width="83" class="rounded-circle">
+												</div>
+												<div class="patient-details">
+													<h5>Ami Smith</h5>
+													<h6>Heart Implant</h6>
+												</div>
+												<div>
+													<img src="assets\img\blockquotes.png" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem </p>
+										</div>
+									</div>	
+								</div>
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="testimonials-item">
+									<div class="card">
+										<div class="card-header">
+											<div class="d-flex align-items-center justify-content-between">
+												<div class="">
+													<img src="assets\img\patients\patient1.jpg" alt="" width="83" class="rounded-circle">
+												</div>
+												<div class="patient-details">
+													<h5>Brian Burcham</h5>
+													<h6>Heart Implant</h6>
+												</div>
+												<div>
+													<img src="assets\img\blockquotes.png" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem </p>
+										</div>
+									</div>	
+								</div>					
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="testimonials-item">
+									<div class="card">
+										<div class="card-header">
+											<div class="d-flex align-items-center justify-content-between">
+												<div class="">
+													<img src="assets\img\patients\patient2.jpg" alt="" width="83" class="rounded-circle">
+												</div>
+												<div class="patient-details">
+													<h5>James Smith</h5>
+													<h6>Heart Implant</h6>
+												</div>
+												<div>
+													<img src="assets\img\blockquotes.png" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem </p>
+										</div>
+									</div>	
+								</div>					
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="testimonials-item">
+									<div class="card">
+										<div class="card-header">
+											<div class="d-flex align-items-center justify-content-between">
+												<div class="">
+													<img src="assets\img\patients\patient3.jpg" alt="" width="83" class="rounded-circle">
+												</div>
+												<div class="patient-details">
+													<h5>Ana Proctor</h5>
+													<h6>Heart Implant</h6>
+												</div>
+												<div>
+													<img src="assets\img\blockquotes.png" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem </p>
+										</div>
+									</div>	
+								</div>					
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="testimonials-item">
+									<div class="card">
+										<div class="card-header">
+											<div class="d-flex align-items-center justify-content-between">
+												<div class="">
+													<img src="assets\img\patients\patient4.jpg" alt="" width="83" class="rounded-circle">
+												</div>
+												<div class="patient-details">
+													<h5>Joseph Butler</h5>
+													<h6>Heart Implant</h6>
+												</div>
+												<div>
+													<img src="assets\img\blockquotes.png" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem </p>
+										</div>
+									</div>	
+								</div>				
+								<!-- /Slider Item -->
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
+								<!-- Slider Item -->
+								<div class="testimonials-item">
+									<div class="card">
+										<div class="card-header">
+											<div class="d-flex align-items-center justify-content-between">
+												<div class="">
+													<img src="assets\img\patients\patient5.jpg" alt="" width="83" class="rounded-circle">
+												</div>
+												<div class="patient-details">
+													<h5>Anna Norton</h5>
+													<h6>Heart Implant</h6>
+												</div>
+												<div>
+													<img src="assets\img\blockquotes.png" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem </p>
+										</div>
+									</div>	
+								</div>				
+								<!-- /Slider Item -->
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
+								<!-- Slider Item -->
+								<div class="testimonials-item">
+									<div class="card">
+										<div class="card-header">
+											<div class="d-flex align-items-center justify-content-between">
+												<div class="">
+													<img src="assets\img\patients\patient6.jpg" alt="" width="83" class="rounded-circle">
+												</div>
+												<div class="patient-details">
+													<h5>Bryce Cotten</h5>
+													<h6>Heart Implant</h6>
+												</div>
+												<div>
+													<img src="assets\img\blockquotes.png" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem </p>
+										</div>
+									</div>	
+								</div>				
+								<!-- /Slider Item -->
+								
+							</div>
+							<!-- /Slider -->
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /Testimonials -->
 
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
+			<!--  Choose Us -->
+			<section class="choose-us">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-lg-6">
+							<div class="left">
+								<div class="section-header">
+									<h5>OUR BENEFITS</h5>
+									<h2>Choose Our Cardiology <br>Healthcare Solutions</h2>
+								</div>
+								<div class="row">
+									<div class="col-12 col-lg-6">
+										<div class="choose-col">
+											<div class="top-title d-flex align-items-center">
+												<span><img src="assets\img\check-mark.png" alt=""></span>
+												<span>Expert Nursing</span>
+											</div>
+											<p>Lorem Ipsum has been the industry's standard dummy text ever since the 500s, when an unknown printer took a galley of type</p>
+										</div>
+									</div>
+									<div class="col-12 col-lg-6">
+										<div class="choose-col">
+											<div class="top-title d-flex align-items-center">
+												<span><img src="assets\img\check-mark.png" alt=""></span>
+												<span>Heath care Expert</span>
+											</div>
+											<p>Lorem Ipsum has been the industry's standard dummy text ever since the 500s, when an unknown printer took a galley of type</p>
+										</div>
+									</div>
+									<div class="col-12 col-lg-6">
+										<div class="choose-col">
+											<div class="top-title d-flex align-items-center">
+												<span><img src="assets\img\check-mark.png" alt=""></span>
+												<span>Individual Approach</span>
+											</div>
+											<p>Lorem Ipsum has been the industry's standard dummy text ever since the 500s, when an unknown printer took a galley of type</p>
+										</div>
+									</div>
+									<div class="col-12 col-lg-6">
+										<div class="choose-col">
+											<div class="top-title d-flex align-items-center">
+												<span><img src="assets\img\check-mark.png" alt=""></span>
+												<span>Emergency Help</span>
+											</div>
+											<p>Lorem Ipsum has been the industry's standard dummy text ever since the 500s, when an unknown printer took a galley of type</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-6">
+							<div class="right">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--  /Choose Us -->
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
+			<!-- Blog -->
+			<section class="blog-section">
+				<div class="container">
+					<div class="section-header text-center">
+						<h5>READ OUR BLOG</h5>
+						<h2>Featured News and Advices</h2>
+						<p class="sub-title">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</p>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-12 col-md-6 col-lg-4">
+							<div class="blog-widget">
+								<a href="blog-list.html" class="blog-img">
+									<img src="assets\img\blog1.png" alt="">
+								</a>
+								<div class="date-col">
+									<span>14 Aug 2020</span>
+								</div>
+								<div class="blog-content text-center">
+									<h6>Expert Nursing</h6>
+									<h5>Is Running Really Good for the Heart?</h5>
+									<p>There are lorem ipsum is simply free many variations of Ipsum the majority suffered.</p>
+									<a href="blog-list.html" class="readmore-btn" tabindex="-1"><i class="fas fa-chevron-circle-right"></i> Read more</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4">
+							<div class="blog-widget">
+								<a href="blog-list.html" class="blog-img">
+									<img src="assets\img\blog2.png" alt="">
+								</a>
+								<div class="date-col">
+									<span>12 Aug 2020</span>
+								</div>
+								<div class="blog-content text-center">
+									<h6>Heath care Expert</h6>
+									<h5>Modeling data increase to endovascular therapy</h5>
+									<p>There are lorem ipsum is simply free many variations of Ipsum the majority suffered.</p>
+									<a href="blog-list.html" class="readmore-btn" tabindex="-1"><i class="fas fa-chevron-circle-right"></i> Read more</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 col-lg-4">
+							<div class="blog-widget">
+								<a href="blog-list.html" class="blog-img">
+									<img src="assets\img\blog3.png" alt="">
+								</a>
+								<div class="date-col">
+									<span>10 Aug 2020</span>
+								</div>
+								<div class="blog-content text-center">
+									<h6>Individual Approach</h6>
+									<h5>Get the Exercise Tips for Limited Mobility</h5>
+									<p>There are lorem ipsum is simply free many variations of Ipsum the majority suffered.</p>
+									<a href="blog-list.html" class="readmore-btn" tabindex="-1"><i class="fas fa-chevron-circle-right"></i> Read more</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /Blog -->
+			
+			<!-- Footer -->
+			<footer class="footer">
+				
+				<!-- Footer Top -->
+				<div class="footer-top">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-3 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-about">
+									<div class="footer-logo">
+										<img src="assets\img\footer-logo.png" alt="logo">
+									</div>
+									<div class="footer-about-content">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+										<div class="social-icon">
+											<ul>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+												</li>
+												<li>
+													<a href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+							<div class="col-lg-3 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-menu">
+									<h2 class="footer-title">For Patients</h2>
+									<ul>
+										<li><a href="search.html">Search for Doctors</a></li>
+										<li><a href="login.html">Login</a></li>
+										<li><a href="register.html">Register</a></li>
+										<li><a href="booking.html">Booking</a></li>
+										<li><a href="patient-dashboard.html">Patient Dashboard</a></li>
+									</ul>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+							<div class="col-lg-3 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-menu">
+									<h2 class="footer-title">For Doctors</h2>
+									<ul>
+										<li><a href="appointments.html">Appointments</a></li>
+										<li><a href="chat.html">Chat</a></li>
+										<li><a href="login.html">Login</a></li>
+										<li><a href="doctor-register.html">Register</a></li>
+										<li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
+									</ul>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+							<div class="col-lg-3 col-md-6">
+							
+								<!-- Footer Widget -->
+								<div class="footer-widget footer-contact">
+									<h2 class="footer-title">Contact Us</h2>
+									<div class="footer-contact-info">
+										<div class="footer-address">
+											<span><i class="fas fa-map-marker-alt"></i></span>
+											<p> 3556  Beech Street, San Francisco,<br> California, CA 94108 </p>
+										</div>
+										<p>
+											<i class="fas fa-mobile-alt"></i>
+											+1 315 369 5943
+										</p>
+										<p class="mb-0">
+											<i class="fas fa-envelope"></i>
+											doccure@example.com
+										</p>
+									</div>
+								</div>
+								<!-- /Footer Widget -->
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- /Footer Top -->
+				
+				<!-- Footer Bottom -->
+                <div class="footer-bottom">
+					<div class="container-fluid">
+					
+						<!-- Copyright -->
+						<div class="copyright">
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									<div class="copyright-text">
+										<p class="mb-0">&copy; 2020 Doccure. All rights reserved.</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6">
+								
+									<!-- Copyright Menu -->
+									<div class="copyright-menu">
+										<ul class="policy-menu">
+											<li><a href="term-condition.html">Terms and Conditions</a></li>
+											<li><a href="privacy-policy.html">Policy</a></li>
+										</ul>
+									</div>
+									<!-- /Copyright Menu -->
+									
+								</div>
+							</div>
+						</div>
+						<!-- /Copyright -->
+						
+					</div>
+				</div>
+				<!-- /Footer Bottom -->
+				
+			</footer>
+			<!-- /Footer -->
+		   
+	   </div>
+	   <!-- /Main Wrapper -->
+	  
+		<!-- jQuery -->
+		<script src="assets\js\jquery.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets\js\popper.min.js"></script>
+		<script src="assets\js\bootstrap.min.js"></script>
+		
+		<!-- Slick JS -->
+		<script src="assets\js\slick.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets\js\script.js"></script>
+		
+	</body>
 </html>

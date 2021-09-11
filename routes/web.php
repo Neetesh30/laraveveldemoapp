@@ -23,13 +23,11 @@ use App\Http\Controllers\GuestController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::GET('/',[GuestController::class,'welcome'])->name('welcome');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->name('admin.')->group(function(){
        
