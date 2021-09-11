@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SpecialityController;
 use App\Http\Controllers\Admin\DoctorsController;
@@ -114,7 +116,7 @@ Route::prefix('patient')->name('patient.')->group(function(){
         Route::post('/check',[PatientController::class,'check'])->name('check');
     });
     
-    Route::middleware(['auth:patient','preventbackbutton','XssSanitizer'])->group(function(){
+    Route::middleware(['auth:patient','preventbackbutton','XssSanitizer','verified'])->group(function(){
         Route::GET('/home',[PatientController::class,'index'])->name('home');
         Route::post('/logout',[PatientController::class,'logout'])->name('logout');
         // Route::view('/profile','dashboard.patient.profile')->name('profile');
@@ -133,3 +135,24 @@ Route::prefix('patient')->name('patient.')->group(function(){
     });
     
 });
+
+// verify patient email registration
+
+Route::get('/email/verify', function () {
+    return view('patient.verify-email');
+})->middleware('auth:patient')->name('verification.notice');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    
+    // dd($request);
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth:patient', 'throttle:6,1'])->name('verification.resend');
+
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('patient/home');
+})->middleware(['auth:patient', 'signed'])->name('verification.verify');

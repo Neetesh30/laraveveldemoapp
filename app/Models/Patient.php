@@ -8,9 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 
-class Patient extends Authenticatable
+class Patient extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use  Notifiable;
 
     /**
      * The attributes that are mass assignable.
