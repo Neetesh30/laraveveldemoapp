@@ -76,7 +76,7 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link header-login" href="index.html">Home </a>
+							<a class="nav-link header-login" href="/">Home </a>
 						</li>
 					</ul>
 				</nav>

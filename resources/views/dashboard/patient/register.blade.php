@@ -64,13 +64,10 @@
 						</div>
 						<ul class="main-nav">
 							<li>
-								<a href="#">Home</a>
+								<a href="/">Home</a>
 							</li>
-                            <li class="active"><a href="{{redirect('pateint.register')}}">Register</a></li>
-                            <li class=""><a href="{{redirect('pateint.login')}}">Login</a></li>
-							<li class="login-link">
-								<a href="{{redirect('pateint.login')}}">Login / Signup</a>
-							</li>
+                            <li class="active"><a href="register">Register</a></li>
+                            <li class=""><a href="login">Login</a></li>
 						</ul>
 					</div>		 
 					<ul class="nav header-navbar-rht">
@@ -82,9 +79,6 @@
 								<p class="contact-header">Contact</p>
 								<p class="contact-info-header"> +91 {{$app_contact}}</p>
 							</div>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link header-login" href="{{redirect('pateint.login')}}">login / Signup </a>
 						</li>
 					</ul>
 				</nav>
