@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SpecialityController;
 use App\Http\Controllers\Admin\DoctorsController;
@@ -64,7 +62,7 @@ Route::prefix('patient')->name('patient.')->group(function(){
         Route::post('/check',[PatientController::class,'check'])->name('check');
     });
     
-    Route::middleware(['auth:patient','preventbackbutton','XssSanitizer','verified'])->group(function(){
+    Route::middleware(['auth:patient','preventbackbutton','XssSanitizer'])->group(function(){
         Route::GET('/home',[PatientController::class,'index'])->name('home');
         Route::post('/logout',[PatientController::class,'logout'])->name('logout');
         Route::GET('/profile',[PatientController::class,'patientprofile'])->name('profile');
@@ -76,4 +74,8 @@ Route::prefix('patient')->name('patient.')->group(function(){
         Route::GET('/checkout',[CheckoutController::class,'checkOut'])->name('checkout');
     });
     
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> parent of 776a3f0 (setup module for patient email verification)
