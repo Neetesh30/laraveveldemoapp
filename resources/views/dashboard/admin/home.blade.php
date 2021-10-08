@@ -2,496 +2,228 @@
 @section('title','Admin Dashboard')
 
 @section('content')
-        
-        <!-- Page Wrapper -->
+    	<!-- Page Wrapper -->
         <div class="page-wrapper">
-        
             <div class="content container-fluid">
-                
+            
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <h3 class="page-title">Welcome Admin!</h3>
+                        <div class="col-sm-7 col-auto">
+                            <h3 class="page-title">List of Users</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Users</li>
                             </ul>
                         </div>
-                    </div>
+                 </div>
                 </div>
                 <!-- /Page Header -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title  justify-content-between">
+                                    <a href="/admin/usersgrid" class="pull-right   " ><i class="fa fa-th ml-1 mr-1"></i></a>
+                                    <a href="{{route('admin.home')}}" class="pull-right text-danger " ><i class="fa fa-list mr-1"></i></a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                <div class="row">
+                    <div class="col-sm-12">
+                    
+                        @if (Session::get('danger'))
+                        <div class="alert alert-danger">
+                            {{Session::get('danger')}}
+                        </div>
+                    @endif
+                    @if (Session::get('success'))
+                        <div class="alert alert-success">
+                            {{Session::get('success')}}
+                        </div>
+                    @endif
 
-                <div class="row">
-                    <div class="col-xl-3 col-sm-6 col-12">
+                        @foreach ($errors->all() as $message)
+                            <div class="alert alert-danger">
+                                    {{$message}}
+                            </div>
+                         @endforeach
                         <div class="card">
                             <div class="card-body">
-                                <div class="dash-widget-header">
-                                    <span class="dash-widget-icon text-primary border-primary">
-                                        <i class="fe fe-users"></i>
-                                    </span>
-                                    <div class="dash-count">
-                                        <h3>168</h3>
-                                    </div>
-                                </div>
-                                <div class="dash-widget-info">
-                                    <h6 class="text-muted">Doctors</h6>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-primary w-50"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="dash-widget-header">
-                                    <span class="dash-widget-icon text-success">
-                                        <i class="fe fe-credit-card"></i>
-                                    </span>
-                                    <div class="dash-count">
-                                        <h3>487</h3>
-                                    </div>
-                                </div>
-                                <div class="dash-widget-info">
-                                    
-                                    <h6 class="text-muted">Patients</h6>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-success w-50"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="dash-widget-header">
-                                    <span class="dash-widget-icon text-danger border-danger">
-                                        <i class="fe fe-money"></i>
-                                    </span>
-                                    <div class="dash-count">
-                                        <h3>485</h3>
-                                    </div>
-                                </div>
-                                <div class="dash-widget-info">
-                                    
-                                    <h6 class="text-muted">Appointment</h6>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-danger w-50"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="dash-widget-header">
-                                    <span class="dash-widget-icon text-warning border-warning">
-                                        <i class="fe fe-folder"></i>
-                                    </span>
-                                    <div class="dash-count">
-                                        <h3>$62523</h3>
-                                    </div>
-                                </div>
-                                <div class="dash-widget-info">
-                                    
-                                    <h6 class="text-muted">Revenue</h6>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-warning w-50"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-lg-6">
-                    
-                        <!-- Sales Chart -->
-                        <div class="card card-chart">
-                            <div class="card-header">
-                                <h4 class="card-title">Revenue</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="morrisArea"></div>
-                            </div>
-                        </div>
-                        <!-- /Sales Chart -->
-                        
-                    </div>
-                    <div class="col-md-12 col-lg-6">
-                    
-                        <!-- Invoice Chart -->
-                        <div class="card card-chart">
-                            <div class="card-header">
-                                <h4 class="card-title">Status</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="morrisLine"></div>
-                            </div>
-                        </div>
-                        <!-- /Invoice Chart -->
-                        
-                    </div>	
-                </div>
-                <div class="row">
-                    <div class="col-md-6 d-flex">
-                    
-                        <!-- Recent Orders -->
-                        <div class="card card-table flex-fill">
-                            <div class="card-header">
-                                <h4 class="card-title">Doctors List</h4>
-                            </div>
-                            <div class="card-body">
+                                <a class="btn btn-primary" href="{{ URL::to('/admin/pdf') }}">Print to PDF</a>
                                 <div class="table-responsive">
-                                    <table class="table table-hover table-center mb-0">
+                                    <table class="datatable table table-hover table-center mb-0">
                                         <thead>
                                             <tr>
-                                                <th>Doctor Name</th>
-                                                <th>Speciality</th>
-                                                <th>Earned</th>
-                                                <th>Reviews</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\doctors\doctor-thumb-01.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Dr. Ruby Perrin</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Cardiologist</td>
-                                                <td>$3200.00</td>
-                                                <td>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star-o text-secondary"></i>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\doctors\doctor-thumb-02.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Dr. Fred Ortego</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Cardiologist</td>
-                                                <td>$3100.00</td>
-                                                <td>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star-o text-secondary"></i>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\doctors\doctor-thumb-03.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Dr. Deborah Angel</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Cardiology</td>
-                                                <td>$4000.00</td>
-                                                <td>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star-o text-secondary"></i>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\doctors\doctor-thumb-04.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Dr. Sofia Brient</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Cardiologist</td>
-                                                <td>$3200.00</td>
-                                                <td>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star-o text-secondary"></i>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\doctors\doctor-thumb-05.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Dr. Marvin Campbell</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Cardiologist</td>
-                                                <td>$3500.00</td>
-                                                <td>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star text-warning"></i>
-                                                    <i class="fe fe-star-o text-secondary"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Recent Orders -->
-                        
-                    </div>
-                    <div class="col-md-6 d-flex">
-                    
-                        <!-- Feed Activity -->
-                        <div class="card  card-table flex-fill">
-                            <div class="card-header">
-                                <h4 class="card-title">Patients List</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-center mb-0">
-                                        <thead>
-                                            <tr>													
-                                                <th>Patient Name</th>
-                                                <th>Phone</th>
-                                                <th>Last Visit</th>
-                                                <th>Paid</th>													
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\patients\patient1.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Megan Bird </a>
-                                                    </h2>
-                                                </td>
-                                                <td>8286329170</td>
-                                                <td>20 Oct 2019</td>
-                                                <td class="text-right">$100.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\patients\patient2.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Alvin Boykin </a>
-                                                    </h2>
-                                                </td>
-                                                <td>2077299974</td>
-                                                <td>22 Oct 2019</td>
-                                                <td class="text-right">$200.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\patients\patient3.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Nicholas Hicks</a>
-                                                    </h2>
-                                                </td>
-                                                <td>2607247769</td>
-                                                <td>21 Oct 2019</td>
-                                                <td class="text-right">$250.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\patients\patient4.jpg" alt="User Image"></a>
-                                                        <a href="profile.html"> Sherri McCarthy</a>
-                                                    </h2>
-                                                </td>
-                                                <td>5043686874</td>
-                                                <td>21 Sep 2019</td>
-                                                <td class="text-right">$150.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\patients\patient5.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Roger Loyd</a>
-                                                    </h2>
-                                                </td>
-                                                <td>9548207887</td>
-                                                <td>18 Sep 2019</td>
-                                                <td class="text-right">$350.00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Feed Activity -->
-                        
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                    
-                        <!-- Recent Orders -->
-                        <div class="card card-table">
-                            <div class="card-header">
-                                <h4 class="card-title">Appointment List</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-center mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>Doctor Name</th>
-                                                <th>Speciality</th>
-                                                <th>Patient Name</th>
-                                                <th>Apointment Time</th>
-                                                <th>Status</th>
-                                                <th class="text-right">Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\doctors\doctor-thumb-01.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Dr. Ruby Perrin</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Cardiologist</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\patients\patient1.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Megan Bird </a>
-                                                    </h2>
-                                                </td>
-                                                <td>9 Nov 2019 <span class="text-primary d-block">11.00 AM - 11.15 AM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_1" class="check" checked="">
-                                                        <label for="status_1" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td class="text-right">
-                                                    $200.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\doctors\doctor-thumb-02.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Dr. Fred Ortego</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Cardiologist</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\patients\patient2.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Alvin Boykin </a>
-                                                    </h2>
-                                                </td>
+                                                <th>User Id</th>
+                                                <th>User Name</th>
+                                                <th>Contact No</th>
+                                                <th>Address</th>
+                                                <th>Action </th>
                                                 
-                                                <td>5 Nov 2019 <span class="text-primary d-block">11.00 AM - 11.35 AM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_2" class="check" checked="">
-                                                        <label for="status_2" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td class="text-right">
-                                                    $300.00
-                                                </td>
                                             </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($DoctorsList as $item)
                                             <tr>
+                                                <td>00{{$item['id']}}</td>
                                                 <td>
                                                     <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\doctors\doctor-thumb-03.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Dr. Deborah Angel</a>
+                                                        <a href="#" class="avatar avatar-sm mr-2">
+                                                            <img class="avatar-img rounded-circle" 
+                                                            src="..\assets\img\patients\{{$item['imagepath'] == NULL ? 'dummy-profile.png': $item['imagepath']}}" alt="User Image">
+                                                        </a>
+                                                        <a href="#">{{$item['name']}}</a>
                                                     </h2>
                                                 </td>
-                                                <td>Cardiology</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\patients\patient3.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Nicholas Hicks</a>
-                                                    </h2>
-                                                </td>
-                                                <td>11 Nov 2019 <span class="text-primary d-block">12.00 PM - 12.15 PM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_3" class="check" checked="">
-                                                        <label for="status_3" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td class="text-right">
-                                                    $150.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\doctors\doctor-thumb-04.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Dr. Sofia Brient</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Cardiologist</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\patients\patient4.jpg" alt="User Image"></a>
-                                                        <a href="profile.html"> Sherri McCarthy</a>
-                                                    </h2>
-                                                </td>
-                                                <td>7 Nov 2019<span class="text-primary d-block">1.00 PM - 1.20 PM</span></td>
-                                                <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_4" class="check" checked="">
-                                                        <label for="status_4" class="checktoggle">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <td class="text-right">
-                                                    $150.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\doctors\doctor-thumb-05.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Dr. Marvin Campbell</a>
-                                                    </h2>
-                                                </td>
-                                                <td>Cardiologist</td>
-                                                <td>
-                                                    <h2 class="table-avatar">
-                                                        <a href="profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="assets\img\patients\patient5.jpg" alt="User Image"></a>
-                                                        <a href="profile.html">Roger Loyd</a>
-                                                    </h2>
-                                                </td>
+                                                <td>{{$item['phoneno']}}</td>
+                                                <td>{{$item['address']}},{{$item['city']}} <br><small>{{$item['state']}}</small></td>
                                                 
-                                                <td>15 Nov 2019 <span class="text-primary d-block">1.00 PM - 1.15 PM</span></td>
+                                                
                                                 <td>
-                                                    <div class="status-toggle">
-                                                        <input type="checkbox" id="status_5" class="check" checked="">
-                                                        <label for="status_5" class="checktoggle">checkbox</label>
+                                                    <button data-toggle="modal" href="#view_user_id_{{$item['id']}}" class="btn btn-warning">View</button>
+                                                    <button data-toggle="modal" href="#edit_specialities_details_id_{{$item['id']}}" class="btn btn-dark">Edit</button>
+                                                    <button data-toggle="modal" href="#delete_modal_id_{{$item['id']}}" class="btn btn-sm bg-danger-light" class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>    
+
+
+                                            <!-- View Details Modal -->
+			<div class="modal fade" id="view_user_id_{{$item['id']}}" aria-hidden="true" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">View User ID : #SS00{{$item['id']}}</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							    <div class="row form-row">
+									<div class="col-12 col-sm-6">
+										<div class="form-group">
+											<label>User Details </label>
+                                            <label>Name :  {{$item['address']}}</label>
+                                            <br>
+                                            <label>Email :  {{$item['email']}}</label>
+                                            <br>
+                                            <label>Contact No :  {{$item['phoneno']}}</label>
+                                           
+										</div>
+									</div>
+									<div class="col-12 col-sm-6">
+                                        <div class="form-group">
+											<label>Address </label>
+                                            <label>Address :  {{$item['address']}}</label>
+                                            <br>
+                                            <label>City :  {{$item['city']}}</label>
+                                            <br>
+                                            <label>State :  {{$item['state']}}</label>
+                                            <br>
+                                            <label>Country :  {{$item['country']}}</label>
+                                            <br>
+                                            <label>Pincode :  {{$item['zipcode']}}</label>
+                                        </div>
+									</div>
+                                    
+                                    <div class="col-12 col-sm-6">
+                                        <a class="btn btn-primary" href="{{ URL::to('/admin/singleuserpdf/') }}/{{$item['id']}}">Print to PDF</a>
+                                    </div>
+                                    
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /View Details Modal -->
+
+           <!-- Edit Details Modal -->
+			<div class="modal fade" id="edit_specialities_details_id_{{$item['id']}}" aria-hidden="true" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Edit User ID : #00{{$item['id']}}</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form action="{{route('admin.updateuser')}}" method="post" enctype="multipart/form-data">
+								@csrf
+                                <div class="row form-row">
+									<div class="col-12 col-sm-6">
+										<div class="form-group">
+											<label>Update User : {{$item['name']}}  </label>
+											<input type="text" class="form-control" readonly name="name" value="{{$item['name']}}">
+											<input type="text" class="form-control" name="phoneno" value="{{$item['phoneno']}}">
+											<input type="hidden" class="form-control" name="id" value="{{$item['id']}}">
+										</div>
+									</div>
+									<div class="col-12 col-sm-6">
+                                        <div class="form-group">
+											<label>Address </label>
+											<input type="text" class="form-control" name="shipaddress" value="{{$item['address']}}">
+											<input type="text" class="form-control" name="city" value="{{$item['city']}}">
+											<input type="text" class="form-control" name="state" value="{{$item['state']}}">
+											<input type="text" class="form-control" name="country" value="{{$item['country']}}">
+											<input type="text" class="form-control" name="pincode" value="{{$item['zipcode']}}">
+										</div>
+									</div>
+									
+								</div>
+								<button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Edit Details Modal -->
+
+            		<!-- Delete Modal -->
+			<div class="modal fade" id="delete_modal_id_{{$item['id']}}" aria-hidden="true" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+					
+                                                <div class="modal-body">
+                                                    <div class="form-content p-2">
+                                                        <h4 class="modal-title">Delete Id : #SS00{{$item['id']}}</h4>
+                                                        <p class="mb-4">Are you sure want to delete?</p>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <form action="{{route('admin.deleteuser')}}" method="post">
+                                                                    @csrf
+                                                                    <input type="hidden" name="id" value="{{$item['id']}}">
+                                                                    <button type="submit" class="btn btn-primary">Confirm </button>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-md-6 col">
+                                                                <button type="button" class="btn btn-danger float-right" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </td>
-                                                <td class="text-right">
-                                                    $200.00
-                                                </td>
-                                            </tr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /Delete Modal -->
+                                            @endforeach
+                                            
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        <!-- /Recent Orders -->
-                        
-                    </div>
+                    </div>			
                 </div>
                 
             </div>			
         </div>
+
+        
         <!-- /Page Wrapper -->
+
+      
+			
 @endsection

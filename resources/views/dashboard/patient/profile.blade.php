@@ -65,7 +65,7 @@
                                 <input type="email" class="form-control" readonly="" value="{{auth::guard('patient')->user()->email}}">
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Full Name <span class="text-danger">*</span></label>
                                 <input type="text" name="name" class="form-control" value="{{auth::guard('patient')->user()->name}}">
@@ -75,38 +75,6 @@
                             <div class="form-group">
                                 <label>Phone Number</label>
                                 <input type="text" name="phoneno" class="form-control" value="{{auth::guard('patient')->user()->phoneno}}">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Gender : <span class="text text:primary">{{auth::guard('patient')->user()->gender}}</span></label>
-                                <select class="form-control select" name="gender" >
-                                    <option value="{{auth::guard('patient')->user()->gender}}">Selected Option :  {{auth::guard('patient')->user()->gender}}</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-0">
-                                <label>Date of Birth {{auth::guard('patient')->user()->dateofbirth}}</label>
-                                <input type="date" class="form-control" value="{{auth::guard('patient')->user()->dateofbirth}}" name="dateofbirth">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label>Blood Group</label>
-                                <select class="form-control select" name="bloodgrp">
-                                    <option value="{{auth::guard('patient')->user()->bloodgrp}}">Selected Option :  {{auth::guard('patient')->user()->bloodgrp}}</option>
-                                    <option value="A-">A-</option>
-                                    <option value="A+">A+</option>
-                                    <option value="B-">B-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="AB-">AB-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="O-">O-</option>
-                                    <option value="O+">O+</option>
-                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">

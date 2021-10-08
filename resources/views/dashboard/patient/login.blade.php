@@ -13,7 +13,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		<title>{{$appname}}- Patient Login</title>
+		<title>{{$appname}}- User Login</title>
 		
 		<!-- Favicons -->
 		<link type="image/x-icon" href="{{url('')}}\admin\assets\img\{{$faviconimagepath == NULL ? 'dummy-company-logo.jpg': $faviconimagepath}}" rel="icon">
@@ -98,12 +98,9 @@
 							<!-- Login Tab Content -->
 							<div class="account-content">
 								<div class="row align-items-center justify-content-center">
-									<div class="col-md-7 col-lg-6 login-left">
-										<img src="{{url('')}}\assets\img\login-banner.png" class="img-fluid" alt="Doccure Login">	
-									</div>
-									<div class="col-md-12 col-lg-6 login-right">
+									<div class="col-md-12 col-lg-6 ">
 										<div class="login-header">
-											<h3>Patients Login </h3>
+											<h3>User Login </h3>
 										</div>
 										@if (Session::get('fail'))
 											<div class="alert alert-danger">

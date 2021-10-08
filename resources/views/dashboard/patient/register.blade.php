@@ -10,7 +10,7 @@
 			@endphp
 		@endforeach	
 		<meta charset="utf-8">
-		<title>{{$appname}}- Patient Register</title>
+		<title>{{$appname}}- User Register</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 		
 		<!-- Favicons -->
@@ -116,7 +116,7 @@
 									</div>
 									<div class="col-md-12 col-lg-6 login-right">
 										<div class="login-header">
-											<h3>Patient Register <a href="{{route('doctor.login')}}">Are you a Doctor?</a></h3>
+											<h3>User Register </h3>
 										</div>
 										
 										<!-- Register Form -->

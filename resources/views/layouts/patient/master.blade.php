@@ -61,7 +61,6 @@
 							<li class="has-submenu active">
 								<a href="">Patients <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
-									<li class="{{ 'patient/searchdoctor' == request()->path() ? 'active':''}} "><a href="{{route('patient.searchdoctor')}}">Search Doctor</a></li>
 									<li class="{{ 'patient/home' == request()->path() ? 'active':''}} " ><a href="{{route('patient.home')}}">Patient Dashboard</a></li>
 									<li class="{{ 'patient/profile' == request()->path() ? 'active':''}} " ><a href="{{route('patient.profile')}}">Profile Settings</a></li>
 									<li class="{{ 'patient/changepassword' == request()->path() ? 'active':''}} "><a href="{{route('patient.changepassword')}}">Change Password</a></li>
@@ -144,24 +143,7 @@
                                         <div class="profile-det-info">
                                             <h3>{{auth::guard('patient')->user()->name}}</h3>
                                             <div class="patient-details">
-                                                <h5><i class="fas fa-birthday-cake"></i>@php
-                                                    if(auth::guard('patient')->user()->dateofbirth == NULL){    
-                                                                echo '-';
-                                                    }else{
-                                                        $mydob =  auth::guard('patient')->user()->dateofbirth;
-                                                           $mydob = date("d M Y", strtotime($mydob));
-                                                        echo  $mydob;
-      
-                                                        $secondDate = now();
-      
-                                                        $dateDifference = abs(strtotime($secondDate) - strtotime($mydob));
-      
-                                                        $years  = floor($dateDifference / (365 * 60 * 60 * 24));
-      
-                                                        echo ", ".$years." Years";
-                                                    }
-                                                    @endphp
-                                                </h5>
+                                                
                                                 <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i>{{auth::guard('patient')->user()->address }}, {{auth::guard('patient')->user()->country }} </h5>
                                             </div>
                                         </div>
@@ -174,18 +156,6 @@
                                                 <a href="{{route('patient.home')}}">
                                                     <i class="fas fa-columns"></i>
                                                     <span>Dashboard</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="{{route('patient.searchdoctor')}}">
-                                                    <i class="fas fa-user-md"></i>
-                                                    <span>Search Doctor</span>
-                                                </a>
-                                            </li>
-                                            <li class="{{ 'patient/profile' == request()->path() ? 'active':''}} ">
-                                                <a href="{{route('patient.profile')}}">
-                                                    <i class="fas fa-user-cog"></i>
-                                                    <span>Profile Settings</span>
                                                 </a>
                                             </li>
                                             <li class="{{ 'patient/changepassword' == request()->path() ? 'active':''}} ">

@@ -158,18 +158,7 @@ class PatientController extends Controller
         $request -> validate([
             'name' => "required|regex:/^[a-zA-Z ]*$/|min:4|max:50",
             'phoneno' => "required|numeric|min:10",
-            'gender' => [
-                'required',
-                Rule::in(['male','female']),
-            ],
-            'bloodgrp' => [
-                'required',
-                Rule::in(['A-','A+','B-','B+','AB-','AB+','O-','O+']),
-            ],
-            //'phoneno' => "min:10",
-            'dateofbirth' => "required|date|date_format:Y-m-d",
-            //'dateofbirth' => "before:today",
-        ]);
+            ]);
 
 
         $current_patientid = auth::guard('patient')->user()->id;
@@ -178,10 +167,6 @@ class PatientController extends Controller
 
         $update_patient_basicinformation -> name =  $request->name;
         $update_patient_basicinformation -> phoneno =  $request->phoneno;
-        $update_patient_basicinformation -> gender =  $request->gender;
-        $update_patient_basicinformation -> dateofbirth =  $request->dateofbirth;
-        $update_patient_basicinformation -> bloodgrp =  $request->bloodgrp;
-
         $update_patient_basicinformation -> save();
         
         if($update_patient_basicinformation){
